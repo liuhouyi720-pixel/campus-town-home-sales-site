@@ -1,4 +1,4 @@
-# [Your site's title]
+# Median home sale prices by college town
 
 ## Start here (delete this section before you submit)
 
@@ -28,7 +28,9 @@ Don't edit any of the five dataset files. Your site needs only the CSV file. The
 
 ## What this site is for
 
-_Replace this line with your site's question and audience, or a short description of the site._
+Compare median home sale prices across all 18 cities in the dataset. `index.html`
+shows every city in a bar chart and a table, with full prices rounded to whole US
+dollars and eligible sale counts in the table.
 
 ## Live site
 
@@ -36,11 +38,26 @@ https://your-username.github.io/your-repo-name/
 
 ## Data notes
 
-_Replace this line. Say which rows you left out and why, and how each figure on the site is defined. "Five things that will bite you" in the description sheet lists the problems to cover._
+City/state medians use sales of $1,000 or more, following the description sheet:
+35,438 sales are included and 4 are excluded. High prices remain included.
+Repeated addresses are kept as separate sales. For even-sized groups, the median
+is the average of the middle two prices; half dollars round up for display.
+No calculations depend on home type, property size, or listing dates.
+
+## Refreshing the medians
+
+The committed page works as plain HTML, with no build step. To regenerate its
+summary, chart, and table from the original CSV, a maintainer can run
+`python scripts/update_city_medians.py` from the repository root using Python 3.
+The script uses only the standard library and never changes the dataset files.
+Commit the updated `index.html` along with changes to the script. To review the
+result, open `index.html` directly in a browser; all chart and table values are
+included in the HTML.
 
 ## Tools we used
 
-_Replace this line with your AI coding agent or agents, and any libraries and other tools you used._
+Codex; plain HTML and CSS; Python's standard library for median generation.
+Verification used an independent SQLite query and Chromium through Playwright.
 
 ## Citation
 
